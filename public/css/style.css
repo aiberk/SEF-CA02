@@ -6,7 +6,7 @@
 :root {
   --darkerBlue: #00070e;
   --darkBlue: #000000f0;
-  --lightBlue: #035de566;
+  --lightBlue: #0a0a0a66;
   --white: #ffffff;
   --textBlack: #000000;
   --textWhite: #000000;
@@ -419,7 +419,7 @@ nav button > ion-icon {
 }
 
 .userForms button {
-  background-color: #002855;
+  background-color: var(--darkBlue);
   color: white;
   border: none;
   padding: 0.5rem;

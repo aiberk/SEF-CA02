@@ -1,0 +1,54 @@
+<div class="data-form contentWrapper">
+  <form
+    method="POST"
+    class="columnWrapper userForms centerWrapper"
+    action="<%=`/user/${user._id}/update?_method=PUT`%>">
+    <h2>Edit user:</h2>
+    <div class="contentWrapper">
+      <label for="inputFirstName">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="inputFirstName"
+        value="<%= user.name %>"
+        placeholder="First"
+        autofocus />
+    </div>
+
+    <div class="contentWrapper">
+      <label for="inputPassword">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="inputPassword"
+        value="<%= user.password %>"
+        placeholder="Password"
+        required />
+    </div>
+
+    <div class="contentWrapper">
+      <label for="inputEmail">Email address</label>
+      <input
+        type="email"
+        name="email"
+        id="inputEmail"
+        value="<%= user.email %>"
+        placeholder="Email address"
+        required />
+    </div>
+
+    <div class="contentWrapper">
+      <label for="inputZipCode">Zip Code</label>
+      <input
+        type="text"
+        name="zipCode"
+        id="inputZipCode"
+        pattern="\d*"
+        value="<%= user.zipCode %>"
+        placeholder="Zip Code"
+        required />
+    </div>
+
+    <button type="submit">Update</button>
+  </form>
+</div>

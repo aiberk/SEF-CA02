@@ -1,4 +1,3 @@
-"use strict";
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
@@ -13,8 +12,7 @@ const UserSchema = Schema({
     required: true,
     unique: true,
   },
-  memberships: [{ type: Schema.Types.ObjectId, ref: "Membership" }],
-  isAdmin: { type: Boolean, default: false },
+  prompts: [{ type: Schema.Types.ObjectId, ref: "Prompt" }],
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
