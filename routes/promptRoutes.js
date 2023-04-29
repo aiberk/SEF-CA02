@@ -7,6 +7,11 @@ const promptController = require("../controllers/promptController");
 router.get("/", promptController.index);
 
 /**
+ * POST / - Create a new prompt in the database
+ */
+router.post("/create", promptController.create, promptController.redirectView);
+
+/**
  * GET /new - Render the new prompt page
  */
 // router.get("/new", promptController.new);
