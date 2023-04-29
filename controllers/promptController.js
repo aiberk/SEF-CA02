@@ -1,45 +1,26 @@
 const Prompt = require("../models/Prompt");
 
-exports.index = (req, res) => {
-  Prompt.find({}, (err, prompts) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(prompts);
-    }
-  });
+const getPromptParams = (body) => {
+  return {
+    title: body.title,
+    description: body.description,
+    author: body.author,
+    date: body.date,
+  };
 };
 
-exports.indexView = (req, res) => {
-  // Controller function for rendering the new user page
-  res.render("prompt/index"); // Render the new user view
-};
+module.exports = {
+  index: (req, res) => {
+    Prompt.find({})
+      .then((prompts) => {
+        res.render("prompt/index", { prompts: prompts });
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  },
 
-exports.new = (req, res) => {
-  // Controller function for rendering the new user page
-  res.render("prompt/new"); // Render the new user view
-};
-
-exports.createPrompt = (req, res) => {
-  const newPrompt = new Prompt(req.body);
-  newPrompt.save((err, prompt) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(prompt);
-    }
-  });
-};
-
-exports.getPromptByAuthor = (req, res) => {
-  const author = req.params.author;
-  Prompt.findOne({ author: author }, (err, prompt) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!prompt) {
-      res.status(404).send(`Prompt with author '${author}' not found`);
-    } else {
-      res.status(200).send(prompt);
-    }
-  });
+  indexView: (req, res) => {
+    res.render("prompt/index");
+  },
 };

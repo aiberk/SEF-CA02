@@ -7,9 +7,8 @@ const errorRoutes = require("./errorRoutes");
 const homeRoutes = require("./homeRoutes");
 const promptRoutes = require("./promptRoutes");
 
-router.use("/user", userRoutes);
 router.use("/", homeRoutes);
-router.use("/", errorRoutes);
+router.use("/user", userRoutes);
 router.use("/prompt", promptRoutes);
-
+router.use("/", errorRoutes);
 module.exports = router;

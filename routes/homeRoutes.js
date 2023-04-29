@@ -1,17 +1,8 @@
-const usersController = require("../controllers/usersController");
-const User = require("../models/User");
 const {
   events,
-  pastEvents,
-  programs,
   sponsors,
   homeVars,
-  contactVars,
-  membershipVars,
   aboutVars,
-  facilitiesVars,
-  eventsVars,
-  programsVars,
 } = require("../public/js/CONSTANTS");
 
 const router = require("express").Router();
