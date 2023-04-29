@@ -1,0 +1,46 @@
+<nav id="nav">
+  <div class="contentWrapper">
+    <div id="leftNav">
+      <a href="/" id="logo">y = f(x)</a>
+    </div>
+
+    <div id="rightNav">
+      <ul class="rowWrapper">
+        <li><a href="/about">About</a></li>
+        <li><a href="/aaron">Aaron</a></li>
+        <li><a href="/aby">Aby</a></li>
+        <li><a href="/eugenio">Eugenio</a></li>
+        <li><a href="/rue">Rue</a></li>
+
+        <% if (loggedIn) { %>
+        <a id="profileAvatar" href="<%=`/user/${currentUser._id}`%>"
+          ><%= currentUser.name.charAt(0) %></a
+        >
+        <%} else {%>
+        <a class="logLink" href="/user/login">Log In</a>
+        <% } %>
+      </ul>
+    </div>
+    <button id="menuButton">
+      <ion-icon id="menuIcon" name="menu"></ion-icon>
+      <ion-icon id="closeMenuIcon" name="close"></ion-icon>
+    </button>
+  </div>
+</nav>
+
+<div id="mobileNav">
+  <ul>
+    <% if (loggedIn) { %>
+    <a id="profileAvatar" href="<%=`/user/${currentUser._id}`%>"
+      ><%= currentUser.name.charAt(0) %></a
+    >
+    <%} else {%>
+    <a class="logLink" href="/user/login">Log In</a>
+    <% } %>
+    <li><a href="/about">About</a></li>
+    <li><a href="/aaron">Aaron</a></li>
+    <li><a href="/aby">Aby</a></li>
+    <li><a href="/eugenio">Eugenio</a></li>
+    <li><a href="/rue">Rue</a></li>
+  </ul>
+</div>

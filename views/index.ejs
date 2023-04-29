@@ -1,0 +1,19 @@
+<div id="hero" class="centerWrapper background">
+  <div class="contentWrapper centerWrapper">
+    <div class="welcomeMessage centerWrapper">
+      <% if (loggedIn) { %>
+
+      <h1>Hello,</h1>
+      <h1><%= currentUser.name %></h1>
+      <h1>Welcome to Chat GPT MEEN Stack</h1>
+
+      <% } else { %>
+
+      <h1>Welcome to Chat GPT MEEN Stack</h1>
+
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<script src="/js/homePageScript.js"></script>

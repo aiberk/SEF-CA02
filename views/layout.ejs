@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <%- include("partials/head")%><%- include("partials/nav")%>
+  <div class="centerWrapper">
+    <div class="flashes">
+      <% if (flashMessages) { %> <% if (flashMessages.success) { %>
+      <div class="flash success centerWrapper">
+        <%= flashMessages.success %>
+      </div>
+      <%} else if (flashMessages.error){ %>
+      <div class="flash error centerWrapper"><%= flashMessages.error %></div>
+      <%} %> <%} %>
+    </div>
+  </div>
+  <%- body%> <%- include("partials/footer")%><%- include("partials/scripts")%>
+</html>
