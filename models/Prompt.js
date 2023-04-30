@@ -8,9 +8,10 @@ const PromptSchema = Schema({
     required: true,
   },
   author: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true,
-    unique: true,
+    index: true, // add an index on the author field for performance
   },
   createdAt: {
     type: Date,
