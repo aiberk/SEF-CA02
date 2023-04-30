@@ -21,3 +21,43 @@ Steps:
    d) a form page for each team member which ask the user for some input, then calls the appropriate GPT method to get the response, which it sends back to the browser.
 6) each team member should create a short movie (1-2 minutes) showing them running the app on their computer and trying out their prompt engineering page
 7) each team member uploads a link to the team github and a link to their individual movie (stored in google drive with permisions so anyone with the link can access it),
+
+chatGPT
+clarifAi - images
+Hugging Face: sentiment analsis
+
+
+Google Cloud Vision API: Google Cloud Vision API allows you to analyze images and videos to detect objects, faces, and other features.
+
+Google Cloud Natural Language API: Google Cloud Natural Language API provides sentiment analysis, entity recognition, and other language analysis features.
+
+Google Cloud Translation API: Google Cloud Translation API offers translation services for text, websites, and documents.
+
+Microsoft Text Analytics API: Microsoft Text Analytics API provides sentiment analysis, key phrase extraction, and language detection features.
+
+IBM Tone Analyzer: IBM Tone Analyzer provides tone analysis for text, identifying emotions, social tendencies, and language styles.
+
+Amazon Rekognition: Amazon Rekognition provides image and video analysis features, including object detection, facial recognition, and scene understanding.
+
+DeepAI: DeepAI provides a range of AI APIs, including image and video recognition, natural language processing, and text synthesis.
+
+Algorithmia: Algorithmia offers a range of AI and machine learning APIs for image and video analysis, natural language processing, and data analysis.
+
+
+
+
+
+
+Wit.ai: Wit.ai provides natural language processing capabilities, including intent recognition, entity extraction, and chatbot development. It's owned by Facebook, but it's free to use for non-commercial projects.
+
+Dialogflow: Dialogflow is a natural language processing platform that can be used to build chatbots and voice assistants. It's owned by Google, but it's free to use for small-scale projects.
+
+Affectiva: Affectiva provides emotion recognition capabilities, including facial expression analysis and emotion detection. They offer a free developer package with limited usage.
+
+ParallelDots: ParallelDots provides natural language processing capabilities, including sentiment analysis, keyword extraction, and topic modeling. They offer a free plan with limited usage.
+
+TextRazor: TextRazor provides natural language processing capabilities, including entity extraction, sentiment analysis, and topic modeling. They offer a free plan with limited usage.
+
+Aylien: Aylien provides natural language processing capabilities, including sentiment analysis, entity recognition, and summarization. They offer a free plan with limited usage.
+
+MonkeyLearn: MonkeyLearn provides natural language processing capabilities, including text classification, sentiment analysis, and entity extraction. They offer a free plan with limited usage.

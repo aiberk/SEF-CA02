@@ -70,7 +70,8 @@ module.exports = {
   show: (req, res, next) => {
     // Controller function for showing a user's profile
     let userId = req.params.id; // Get the user ID from the request parameters
-    User.findById(userId) // Find the user by ID
+    User.findById(userId) // Find the user by ID'
+      .populate("prompts")
       .then((user) => {
         res.locals.user = user; // Set the user as a local variable
         next(); // Call the next middleware function

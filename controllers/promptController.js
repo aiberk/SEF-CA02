@@ -1,9 +1,10 @@
 const Prompt = require("../models/Prompt");
+const User = require("../models/User");
 
-const getPromptParams = (body) => {
+const getPromptParams = (body, userId) => {
   return {
     prompt: body.prompt,
-    author: body.author,
+    author: userId,
   };
 };
 
@@ -24,12 +25,27 @@ module.exports = {
 
   create: (req, res) => {
     console.log(req.body);
-    const newPrompt = new Prompt(getPromptParams(req.body));
-    newPrompt
-      .save()
-      .then(() => {
-        res.locals.redirect = "/prompt"; // Set the redirect path
-        res.redirect(res.locals.redirect); // Redirect to the path
+    const userId = req.user._id; // get the ID of the logged-in user
+    User.findById(userId)
+      .then((user) => {
+        // Insert the userId as the author in the new prompt
+        const promptParams = getPromptParams(req.body);
+        promptParams.author = userId;
+
+        const newPrompt = new Prompt(promptParams);
+        newPrompt
+          .save()
+          .then(() => {
+            user.prompts.push(newPrompt._id); // add the prompt ID to the user's prompts array
+            return user.save(); // save the user document
+          })
+          .then(() => {
+            res.locals.redirect = "/prompt"; // Set the redirect path
+            res.redirect(res.locals.redirect); // Redirect to the path
+          })
+          .catch((err) => {
+            res.status(500).send(err);
+          });
       })
       .catch((err) => {
         res.status(500).send(err);

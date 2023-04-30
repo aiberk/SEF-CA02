@@ -15,20 +15,22 @@
       <td><%= user.zipCode %></td>
     </tr>
   </table>
-  <% if (user.subscribedAccount) { %>
-  <h4 class="center">
-    This user has a subscribed account</a
-    >.
-  </h4>
-  <% } %>
-  
-  
   <div>
-    <a href="/user">View all users</a>
+    <% user.prompts.forEach(prompt => { %>
+    <div>
+      <h3><%= prompt.prompt %></h3>
+    </div>
+    <% }); %>
   </div>
+
   <div>
     <a href="<%=`/user/${user._id}/edit`%>">Edit User Details</a>
   </div>
   <div>
-    <a href="<%= `/user/${user._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
-  </div></div>
+    <a
+      href="<%= `/user/${user._id}/delete?_method=DELETE` %>"
+      onclick="return confirm('Are you sure you want to delete this record?')"
+      >Delete</a
+    >
+  </div>
+</div>

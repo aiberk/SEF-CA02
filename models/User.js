@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
+const Prompt = require("./Prompt");
+
 const UserSchema = Schema({
   name: {
     type: String,
@@ -12,7 +14,11 @@ const UserSchema = Schema({
     required: true,
     unique: true,
   },
-  prompts: [{ type: Schema.Types.ObjectId, ref: "Prompt" }],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  prompts: [{ type: Schema.Types.ObjectId, ref: "Prompt" }], // use Prompt schema as a subdocument
 });
 
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });

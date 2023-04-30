@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const promptController = require("../controllers/promptController");
+const userController = require("../controllers/usersController");
 
 /**
  * GET / - Fetch all prompt and render the prompts page index page
@@ -9,7 +10,12 @@ router.get("/", promptController.index);
 /**
  * POST / - Create a new prompt in the database
  */
-router.post("/create", promptController.create, promptController.redirectView);
+router.post(
+  "/create",
+  userController.isAuthenticated,
+  promptController.create,
+  promptController.redirectView
+);
 
 /**
  * GET /new - Render the new prompt page
