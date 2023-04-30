@@ -10,6 +10,11 @@ const PromptSchema = Schema({
   answer: {
     type: String,
   },
+  choice: {
+    type: String,
+    enum: ["Aby", "Rue", "Eugenio", "Aaron"],
+    required: true,
+  },
   author: {
     type: Schema.Types.ObjectId,
     ref: "User",
