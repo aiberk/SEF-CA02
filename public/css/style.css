@@ -436,10 +436,19 @@ table tr {
   padding: 4rem;
   margin: 2rem 0 4rem 0;
   border-radius: 10px;
+  width: 100%;
+  max-width: var(--maxWidth);
+}
+
+.no-prompts-found {
+  display: block;
+  text-align: center;
+
+  font-size: 1.5rem;
 }
 
 .profilePrompts {
-  background-color: rgba(122, 121, 121, 0.087);
+  background-color: rgba(235, 19, 19, 0.087);
   margin: 1rem 0;
 }
 .profilePrompts summary {
@@ -449,4 +458,17 @@ table tr {
 
 .profilePrompts details {
   padding: 1rem;
+}
+
+.aboutPage {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.aboutPage > div {
+  gap: 1.2rem;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  padding: 5rem 0;
+  color: var(--textBlack);
 }

@@ -13,7 +13,6 @@
         placeholder="Prompt"
         autofocus />
     </div>
-
     <div class="contentWrapper">
       <button type="submit">Create Prompt</button>
     </div>
@@ -21,9 +20,12 @@
 </div>
 
 <h2>Prompt Table</h2>
-
 <div class="previousPrompts">
-  <% prompts.forEach(prompt => { %>
+  <% if (prompts.length === 0) { %>
+  <div class="no-prompts-found">
+    No prompts have been created be the first one 🎉
+  </div>
+  <% } else { %> <% prompts.forEach(prompt => { %>
   <div class="previousPrompt">
     <div>
       <details>
@@ -31,7 +33,6 @@
         <p><%= prompt.answer %></p>
       </details>
     </div>
-
     <div class="prompt-author"><%= prompt.author %></div>
     <div class="prompt-date"><%= prompt.createdAt %></div>
     <div class="prompt-delete">
@@ -42,6 +43,5 @@
       >
     </div>
   </div>
-
-  <% }); %>
+  <% }); %> <% } %>
 </div>

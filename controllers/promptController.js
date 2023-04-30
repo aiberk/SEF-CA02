@@ -10,17 +10,20 @@ const openai = new OpenAIApi(configuration);
 const Prompt = require("../models/Prompt");
 const User = require("../models/User");
 
+const engineeredPrompt = "\n\nAby: ";
+
 const getPromptParams = (body, userId) => {
   return {
-    prompt: body.prompt,
+    prompt: body.prompt + engineeredPrompt,
     answer: body.answer || "No answer provided",
     author: userId,
+    choice: "test",
   };
 };
 
 module.exports = {
   index: (req, res) => {
-    Prompt.find({})
+    Prompt.find({ choice: "test" }) // filter by choice field
       .then((prompts) => {
         res.render("prompt/index", { prompts: prompts });
       })
@@ -78,7 +81,41 @@ module.exports = {
         res.status(500).send(err);
       });
   },
+  delete: (req, res, next) => {
+    let promptId = req.params.id; // Get the prompt ID from the request parameters
 
+    Prompt.findById(promptId) // Find the prompt by ID
+      .then((prompt) => {
+        if (
+          (req.isAuthenticated() && req.user._id.equals(prompt.author)) ||
+          (req.isAuthenticated() && req.user.isAdmin === true)
+        ) {
+          // If the user is authenticated and authorized to delete the prompt
+          User.updateOne(
+            { _id: req.user._id },
+            { $pull: { prompts: promptId } }
+          ) // Remove the reference from the user's prompts array
+            .then(() => {
+              return Prompt.findByIdAndRemove(promptId); // Remove the prompt from the database
+            })
+            .then(() => {
+              res.redirect("/prompt"); // Redirect to the prompt index page
+            })
+            .catch((error) => {
+              console.log(`Error deleting prompt by ID: ${error.message}`); // Log any errors
+              next(); // Call the next middleware function
+            });
+        } else {
+          // If the user is not authorized to delete the prompt
+          req.flash("error", "You are not authorized to perform this action."); // Flash an error message
+          res.redirect("/prompt"); // Redirect to the prompt index page
+        }
+      })
+      .catch((error) => {
+        console.log(`Error finding prompt by ID: ${error.message}`); // Log any errors
+        next(); // Call the next middleware function
+      });
+  },
   redirectView: (req, res, next) => {
     let redirectPath = res.locals.redirect;
     if (redirectPath) res.redirect(redirectPath);
