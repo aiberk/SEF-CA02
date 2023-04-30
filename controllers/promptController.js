@@ -13,6 +13,7 @@ const User = require("../models/User");
 const getPromptParams = (body, userId) => {
   return {
     prompt: body.prompt,
+    answer: body.answer || "No answer provided",
     author: userId,
   };
 };
@@ -56,6 +57,11 @@ module.exports = {
           })
           .then((response) => {
             console.log(response.data.choices[0].text);
+            const answer = response.data.choices[0].text.trim(); // trim the whitespace
+            newPrompt.answer = answer;
+            return newPrompt.save();
+          })
+          .then(() => {
             res.locals.redirect = "/prompt";
             res.redirect(res.locals.redirect);
           })

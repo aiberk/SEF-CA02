@@ -25,7 +25,13 @@
 <div class="previousPrompts">
   <% prompts.forEach(prompt => { %>
   <div class="previousPrompt">
-    <div class="prompt-author"><%= prompt.prompt %></div>
+    <div>
+      <details>
+        <summary><%= prompt.prompt %></summary>
+        <p><%= prompt.answer %></p>
+      </details>
+    </div>
+
     <div class="prompt-author"><%= prompt.author %></div>
     <div class="prompt-date"><%= prompt.createdAt %></div>
     <div class="prompt-delete">
