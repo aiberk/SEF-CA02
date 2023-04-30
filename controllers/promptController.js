@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY2,
+  apiKey: process.env.OPENAI_API_KEY3,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -55,7 +55,7 @@ module.exports = {
             });
           })
           .then((response) => {
-            console.log(response.choices[0].text);
+            console.log(response.data.choices[0].text);
             res.locals.redirect = "/prompt";
             res.redirect(res.locals.redirect);
           })
