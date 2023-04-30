@@ -10,17 +10,20 @@ const openai = new OpenAIApi(configuration);
 const Prompt = require("../models/Prompt");
 const User = require("../models/User");
 
+const engineeredPrompt = "\n\nAby: ";
+
 const getPromptParams = (body, userId) => {
   return {
-    prompt: body.prompt,
+    prompt: body.prompt + engineeredPrompt,
     answer: body.answer || "No answer provided",
     author: userId,
+    choice: "Aby",
   };
 };
 
 module.exports = {
   index: (req, res) => {
-    Prompt.find({})
+    Prompt.find({ choice: "Aby" }) // filter by choice field
       .then((prompts) => {
         res.render("aby/index", { prompts: prompts });
       })
