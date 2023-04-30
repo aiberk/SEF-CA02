@@ -56,7 +56,12 @@ router.put("/:id/update", usersController.update, usersController.redirectView);
 /**
  * GET /:id - Display the specified user's profile page
  */
-router.get("/:id", usersController.show, usersController.showView);
+router.get(
+  "/:id",
+  usersController.isAuthenticated,
+  usersController.show,
+  usersController.showView
+);
 
 /**
  * DELETE /:id/delete - Delete the specified user from the database and redirect to the user index page
@@ -65,6 +70,7 @@ router.get("/:id", usersController.show, usersController.showView);
  */
 router.delete(
   "/:id/delete",
+  usersController.isAuthenticated,
   usersController.delete,
   usersController.redirectView
 );
