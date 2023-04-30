@@ -1,0 +1,47 @@
+<div class="data-form contentWrapper">
+  <form
+    class="columnWrapper userForms centerWrapper"
+    action="/aby/create"
+    method="POST">
+    <h2>Aby's Prompt</h2>
+    <div class="contentWrapper">
+      <label for="inputPrompt">Prompt</label>
+      <input
+        type="text"
+        name="prompt"
+        id="inputPrompt"
+        placeholder="Prompt"
+        autofocus />
+    </div>
+
+    <div class="contentWrapper">
+      <button type="submit">Create Prompt</button>
+    </div>
+  </form>
+</div>
+
+<h2>Prompt Table</h2>
+
+<div class="previousPrompts">
+  <% prompts.forEach(prompt => { %>
+  <div class="previousPrompt">
+    <div>
+      <details>
+        <summary><%= prompt.prompt %></summary>
+        <p><%= prompt.answer %></p>
+      </details>
+    </div>
+
+    <div class="prompt-author"><%= prompt.author %></div>
+    <div class="prompt-date"><%= prompt.createdAt %></div>
+    <div class="prompt-delete">
+      <a
+        href="<%= `prompt/${prompt._id}/delete?_method=DELETE` %>"
+        onclick="return confirm('Are you sure you want to delete this record?')"
+        >Delete</a
+      >
+    </div>
+  </div>
+
+  <% }); %>
+</div>
