@@ -382,8 +382,11 @@ nav button > ion-icon {
 */
 
 .profilePageWrapper {
+  display: flex;
+  flex-direction: column;
   padding: 8rem;
   min-height: 400px;
+  gap: 2rem;
 }
 
 table tr {
@@ -430,7 +433,20 @@ table tr {
 
 .previousPrompts {
   background-color: whitesmoke;
-  padding: 2rem;
+  padding: 4rem;
   margin: 2rem 0 4rem 0;
   border-radius: 10px;
+}
+
+.profilePrompts {
+  background-color: rgba(122, 121, 121, 0.087);
+  margin: 1rem 0;
+}
+.profilePrompts summary {
+  padding: 0.5rem;
+  background-color: rgba(122, 121, 121, 0.188);
+}
+
+.profilePrompts details {
+  padding: 1rem;
 }
