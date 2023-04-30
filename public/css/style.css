@@ -443,7 +443,8 @@ table tr {
 .no-prompts-found {
   display: block;
   text-align: center;
-  font-weight: bold;
+
+  font-size: 1.5rem;
 }
 
 .profilePrompts {
@@ -457,4 +458,17 @@ table tr {
 
 .profilePrompts details {
   padding: 1rem;
+}
+
+.aboutPage {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.aboutPage > div {
+  gap: 1.2rem;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  padding: 5rem 0;
+  color: var(--textBlack);
 }
