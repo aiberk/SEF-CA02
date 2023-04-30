@@ -12,7 +12,7 @@ const PromptSchema = Schema({
   },
   choice: {
     type: String,
-    enum: ["Aby", "Rue", "Eugenio", "Aaron"],
+    enum: ["Aby", "Rue", "Eugenio", "Aaron", "test"],
     required: true,
   },
   author: {

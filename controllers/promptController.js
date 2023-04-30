@@ -17,13 +17,13 @@ const getPromptParams = (body, userId) => {
     prompt: body.prompt + engineeredPrompt,
     answer: body.answer || "No answer provided",
     author: userId,
-    choice: "Aby",
+    choice: "test",
   };
 };
 
 module.exports = {
   index: (req, res) => {
-    Prompt.find({ choice: "Aby" }) // filter by choice field
+    Prompt.find({ choice: "test" }) // filter by choice field
       .then((prompts) => {
         res.render("prompt/index", { prompts: prompts });
       })
