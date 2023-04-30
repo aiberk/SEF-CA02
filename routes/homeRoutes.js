@@ -18,7 +18,4 @@ router.get("/about", (req, res) => {
   res.render("about", { headVars: aboutVars });
 });
 
-router.get("/aby", (req, res) => {
-  res.render("about", { headVars: aboutVars });
-});
 module.exports = router;
