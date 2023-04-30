@@ -1,3 +1,11 @@
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: "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",
+});
+
+const openai = new OpenAIApi(configuration);
+
 const Prompt = require("../models/Prompt");
 const User = require("../models/User");
 
@@ -15,6 +23,7 @@ module.exports = {
         res.render("prompt/index", { prompts: prompts });
       })
       .catch((err) => {
+        console.error("Error fetching prompts:", err);
         res.status(500).send(err);
       });
   },
@@ -25,38 +34,47 @@ module.exports = {
 
   create: (req, res) => {
     console.log(req.body);
-    const userId = req.user._id; // get the ID of the logged-in user
+    const userId = req.user._id;
     User.findById(userId)
       .then((user) => {
-        // Insert the userId as the author in the new prompt
-        const promptParams = getPromptParams(req.body);
-        promptParams.author = userId;
+        const promptParams = getPromptParams(req.body, userId);
 
         const newPrompt = new Prompt(promptParams);
-        newPrompt
+        return newPrompt
           .save()
           .then(() => {
-            user.prompts.push(newPrompt._id); // add the prompt ID to the user's prompts array
-            return user.save(); // save the user document
+            user.prompts.push(newPrompt._id);
+            return user.save();
           })
           .then(() => {
-            res.locals.redirect = "/prompt"; // Set the redirect path
-            res.redirect(res.locals.redirect); // Redirect to the path
+            return openai.createCompletion({
+              model: "text-ada-001",
+              prompt: promptParams.prompt,
+              max_tokens: 100,
+            });
+          })
+          .then((response) => {
+            console.log(response.choices[0].text);
+            res.locals.redirect = "/prompt";
+            res.redirect(res.locals.redirect);
           })
           .catch((err) => {
+            console.error(
+              "Error during prompt creation or OpenAI API call:",
+              err
+            );
             res.status(500).send(err);
           });
       })
       .catch((err) => {
+        console.error("Error fetching user:", err);
         res.status(500).send(err);
       });
   },
 
   redirectView: (req, res, next) => {
-    // Middleware function to handle redirects
-    let redirectPath = res.locals.redirect; // Get the redirect path from the local variables
-    if (redirectPath)
-      res.redirect(redirectPath); // If there is a redirect path, redirect to it
-    else next(); // Call the next middleware function
+    let redirectPath = res.locals.redirect;
+    if (redirectPath) res.redirect(redirectPath);
+    else next();
   },
 };
