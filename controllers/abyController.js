@@ -99,7 +99,7 @@ module.exports = {
               return Prompt.findByIdAndRemove(promptId); // Remove the prompt from the database
             })
             .then(() => {
-              res.redirect("/"); // Redirect to the prompt index page
+              res.redirect("/aby"); // Redirect to the prompt index page
             })
             .catch((error) => {
               console.log(`Error deleting prompt by ID: ${error.message}`); // Log any errors
