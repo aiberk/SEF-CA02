@@ -34,11 +34,10 @@
         <p><%= prompt.answer %></p>
       </details>
     </div>
-    <div class="prompt-author"><%= prompt.author %></div>
     <div class="prompt-date"><%= prompt.createdAt %></div>
     <div class="prompt-delete">
       <a
-        href="<%= `../prompt/${prompt._id}/delete?_method=DELETE` %>"
+        href="<%= `../aby/${prompt._id}/delete?_method=DELETE` %>"
         onclick="return confirm('Are you sure you want to delete this record?')"
         >Delete</a
       >

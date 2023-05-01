@@ -10,7 +10,7 @@ const abyRoutes = require("./abyRoutes");
 
 router.use("/", homeRoutes);
 router.use("/user", userRoutes);
-router.use("/prompt", promptRoutes);
+// router.use("/prompt", promptRoutes);
 router.use("/aby", abyRoutes);
 router.use("/", errorRoutes);
 module.exports = router;
