@@ -36,7 +36,7 @@
           <details>
             <summary><%= prompt.prompt %> 
               <a
-                href="<%= `../prompt/${prompt._id}/delete?_method=DELETE` %>"
+                href="<%= `../${prompt.choice.toLowerCase()}/${prompt._id}/delete?_method=DELETE` %>"
                 onclick="return confirm('Are you sure you want to delete this record?')"
                 >Delete</a
               >
@@ -47,11 +47,7 @@
         <div class="prompt-author"><%= user.name %></div> <!-- Assuming user.name is the name of the author -->
         <div class="prompt-date"><%= prompt.createdAt %></div>
         <div class="prompt-delete">
-          <a
-            href="<%= `../prompt/${prompt._id}/delete?_method=DELETE` %>"
-            onclick="return confirm('Are you sure you want to delete this record?')"
-            >Delete</a
-          >
+          
         </div>
       </div>
       <% }); %> <% } %>

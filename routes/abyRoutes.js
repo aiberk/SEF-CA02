@@ -17,4 +17,6 @@ router.post(
   abyController.redirectView
 );
 
+router.delete("/:id/delete", abyController.delete, abyController.redirectView);
+
 module.exports = router;

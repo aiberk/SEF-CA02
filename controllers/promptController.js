@@ -10,7 +10,7 @@ const openai = new OpenAIApi(configuration);
 const Prompt = require("../models/Prompt");
 const User = require("../models/User");
 
-const engineeredPrompt = "\n\nAby: ";
+const engineeredPrompt = "\n\nTest: ";
 
 const getPromptParams = (body, userId) => {
   return {
@@ -65,7 +65,7 @@ module.exports = {
             return newPrompt.save();
           })
           .then(() => {
-            res.locals.redirect = "/prompt";
+            res.locals.redirect = "/";
             res.redirect(res.locals.redirect);
           })
           .catch((err) => {
@@ -108,7 +108,7 @@ module.exports = {
         } else {
           // If the user is not authorized to delete the prompt
           req.flash("error", "You are not authorized to perform this action."); // Flash an error message
-          res.redirect("/prompt"); // Redirect to the prompt index page
+          res.redirect("/login"); // Redirect to the prompt index page
         }
       })
       .catch((error) => {

@@ -70,14 +70,6 @@ app.use((req, res, next) => {
 
 app.use("/", router);
 
-// app.get("/events", (req, res) => {
-//   res.render("events", {
-//     events: events,
-//     pastEvents: pastEvents,
-//     headVars: eventsVars,
-//   });
-// });
-
 /**
  * Gets uses error controller for unknown urls
  */
