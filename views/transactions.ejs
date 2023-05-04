@@ -1,0 +1,72 @@
+
+<h1> Transactions List for <%= user.username %> </h1>
+<a href="/transactions/byCategory">View Transaction by Group &rarr;</a>
+
+<div class="row">
+  <div class="col">
+    <p> Here is your list of transactions! </p>
+  
+  
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" id="th-title">Title <span class="arrowDown hidden">&uarr;</span><span class="arrowUp hidden">&darr;</span></th>
+                <th scope="col" id="th-amount">Amount<span class="arrowDown hidden">&uarr;</span><span class="arrowUp hidden">&darr;</span></th>
+                <th scope="col" id="th-description">Description<span class="arrowDown hidden">&uarr;</span><span class="arrowUp hidden">&darr;</span></th>
+                <th scope="col" id="th-category">Category<span class="arrowDown hidden">&uarr;</span><span class="arrowUp hidden">&darr;</span></th>
+                <th scope="col" id="th-priority">Priority<span class="arrowDown hidden">&uarr;</span><span class="arrowUp hidden">&darr;</span></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <% transactions.forEach(transaction => { %>
+                <tr>
+                  <td><%= transaction.title %></td>
+                  <td><%= transaction.amount %></td>
+                  <td><%= transaction.description %></td>
+                  <td><%= transaction.category %></td>
+                  <td><%= transaction.priority ? transaction.priority : 5 %></td>
+                  <td>
+                    <a href="/transactions/edit/<%= transaction._id %>">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href="/transactions/remove/<%= transaction._id %>">
+                      <i class="bi bi-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+
+          
+      <form method="post" action="transactions" id="form">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+          </div>
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" name="amount" id="amount" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="priority">Priority:</label>
+          <input type="number" name="priority" id="priority" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" name="description" id="description" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input type="text" name="category" id="category" class="form-control" required>
+        </div>
+        <input type="submit" value="Store" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/sort.js"></script>
