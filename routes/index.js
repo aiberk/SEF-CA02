@@ -7,10 +7,16 @@ const errorRoutes = require("./errorRoutes");
 const homeRoutes = require("./homeRoutes");
 const promptRoutes = require("./promptRoutes");
 const abyRoutes = require("./abyRoutes");
+const rueRoutes = require("./rueRoutes");
+const aaronRoutes = require("./aaronRoutes");
+const eugenioRoutes = require("./eugenioRoutes");
 
 router.use("/", homeRoutes);
 router.use("/user", userRoutes);
-// router.use("/prompt", promptRoutes);
 router.use("/aby", abyRoutes);
+router.use("/rue", abyRoutes);
+router.use("/aaron", abyRoutes);
+router.use("/eugenio", abyRoutes);
+
 router.use("/", errorRoutes);
 module.exports = router;
