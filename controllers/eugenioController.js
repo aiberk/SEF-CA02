@@ -11,7 +11,7 @@ const Prompt = require("../models/Prompt");
 const User = require("../models/User");
 
 //Engineered Prompt String
-const engineeredPrompt = "\n\nEugenio: ";
+const engineeredPrompt = "\n\nQ: What is the meaning of life?\nA: ";
 
 const getPromptParams = (body, userId) => {
   return {
