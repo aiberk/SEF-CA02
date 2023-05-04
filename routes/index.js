@@ -14,9 +14,9 @@ const eugenioRoutes = require("./eugenioRoutes");
 router.use("/", homeRoutes);
 router.use("/user", userRoutes);
 router.use("/aby", abyRoutes);
-router.use("/rue", abyRoutes);
-router.use("/aaron", abyRoutes);
-router.use("/eugenio", abyRoutes);
+router.use("/rue", rueRoutes);
+router.use("/aaron", aaronRoutes);
+router.use("/eugenio", eugenioRoutes);
 
 router.use("/", errorRoutes);
 module.exports = router;
