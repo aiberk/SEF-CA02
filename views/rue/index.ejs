@@ -1,9 +1,9 @@
 <div class="data-form contentWrapper">
   <form
     class="columnWrapper userForms centerWrapper"
-    action="/aaron/create"
+    action="/rue/create"
     method="POST">
-    <h2>aaron's Prompt</h2>
+    <h2>rue's Prompt</h2>
     <div class="contentWrapper">
       <label for="inputPrompt">Prompt</label>
       <input
@@ -36,7 +36,7 @@
     <div class="prompt-date"><%= prompt.createdAt %></div>
     <div class="prompt-delete">
       <a
-        href="<%= `aaron/${prompt._id}/delete?_method=DELETE` %>"
+        href="<%= `rue/${prompt._id}/delete?_method=DELETE` %>"
         onclick="return confirm('Are you sure you want to delete this record?')"
         >Delete</a
       >
